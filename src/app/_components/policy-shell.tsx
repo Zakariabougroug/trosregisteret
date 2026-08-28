@@ -17,7 +17,7 @@ export function PolicyShell({
   return (
     <>
       <header className="border-b border-[rgba(92,79,68,.12)] bg-[#fffcfa]">
-        <div className="mx-auto flex min-h-20 w-[min(1120px,calc(100%_-_32px))] items-center justify-between gap-6">
+        <div className="mx-auto flex min-h-20 w-full max-w-6xl items-center justify-between gap-6 px-4">
           <Link href="/" aria-label="Til forsiden">
             <Image className="h-8 w-auto max-sm:h-7" src="/brand/logo-inline.png" alt="Det muslimske trosregisteret" width={2704} height={535} priority />
           </Link>
@@ -25,7 +25,7 @@ export function PolicyShell({
         </div>
       </header>
 
-      <main className="mx-auto w-[min(820px,calc(100%_-_32px))] py-16 sm:py-24">
+      <main className="mx-auto w-full max-w-4xl px-4 py-16 sm:py-24">
         <p className="mb-4 text-xs font-extrabold tracking-[.16em] text-[#047857] uppercase">{eyebrow}</p>
         <h1 className="m-0 text-4xl leading-tight font-extrabold tracking-[-.035em] text-balance sm:text-5xl lg:text-6xl">{title}</h1>
         <p className="mt-6 max-w-[68ch] text-lg leading-8 text-[#5c4f44] sm:text-xl">{introduction}</p>
@@ -37,7 +37,7 @@ export function PolicyShell({
       </main>
 
       <footer className="bg-[#211a14] py-10 text-[#c4b8a8]">
-        <div className="mx-auto flex w-[min(1120px,calc(100%_-_32px))] flex-wrap items-center justify-between gap-5 text-sm">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-5 px-4 text-sm">
           <span>© 2026 Det muslimske trosregisteret</span>
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-3" aria-label="Juridiske lenker">
             <Link className="hover:text-white" href="/personvern">Personvern</Link>
