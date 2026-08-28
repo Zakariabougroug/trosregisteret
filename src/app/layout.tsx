@@ -51,8 +51,14 @@ const websiteSchema = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="nb" className="scroll-smooth scroll-pt-20 motion-reduce:scroll-auto">
-      <body className="m-0 overflow-x-hidden bg-[#fffcfa] font-sans text-[#211a14] antialiased [overflow-wrap:break-word] [text-rendering:optimizeLegibility] selection:bg-[#a7f3d0] selection:text-[#064e3b] max-md:pb-[88px]">
+    <html
+      lang="nb"
+      className="scroll-smooth scroll-pt-20 motion-reduce:scroll-auto"
+    >
+      <body
+        suppressHydrationWarning
+        className="m-0 overflow-x-hidden bg-[#fffcfa] font-sans text-[#211a14] antialiased wrap-break-word [text-rendering:optimizeLegibility] selection:bg-[#a7f3d0] selection:text-[#064e3b] max-md:pb-[88px]"
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

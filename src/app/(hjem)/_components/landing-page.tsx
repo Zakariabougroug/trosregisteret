@@ -59,7 +59,7 @@ const impact = [
 ];
 
 const shell =
-  "mx-auto w-[min(1240px,calc(100%_-_48px))] max-md:w-[calc(100%_-_32px)] max-sm:w-[calc(100%_-_28px)]";
+  "mx-auto w-full max-w-7xl px-6 max-md:px-4 max-sm:px-3.5";
 
 function Reveal({
   children,
@@ -676,8 +676,68 @@ export function LandingPage() {
           </div>
         </section>
 
+        <section
+          className="scroll-mt-20 border-b border-[rgba(4,120,87,.16)] bg-[#ecfdf5]"
+          id="for-trossamfunn"
+        >
+          <div className={`${shell} grid grid-cols-2 items-center gap-12 py-16 lg:gap-20 lg:py-24 max-md:grid-cols-1`}>
+            <Reveal className="flex max-w-2xl flex-col items-start gap-5">
+              <span className="text-xs font-bold tracking-[.14em] text-[#047857] uppercase">
+                For trossamfunn
+              </span>
+              <h2 className="m-0 text-3xl leading-tight font-extrabold tracking-[-.03em] text-balance sm:text-4xl lg:text-5xl">
+                Mangler dere et innmeldingsskjema?
+              </h2>
+              <p className="m-0 text-base leading-7 text-[#5c4f44] md:text-lg">
+                Last ned en gratis mal for innmelding av voksne. Velg Word for
+                å tilpasse skjemaet, eller PDF for forhåndsvisning og utskrift.
+              </p>
+              <p className="m-0 border-l-2 border-[#047857] pl-4 text-sm leading-6 font-semibold text-[#065f46]">
+                Husk å legge inn trossamfunnets navn, logo, adresse og
+                kontaktinformasjon før skjemaet tas i bruk.
+              </p>
+            </Reveal>
+
+            <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+              {[
+                {
+                  format: "DOCX",
+                  title: "Redigerbar Word-mal",
+                  description: "Tilpass navn, logo og kontaktopplysninger.",
+                  href: "/dokumenter/mal-innmelding-trossamfunn.docx",
+                },
+                {
+                  format: "PDF",
+                  title: "PDF-versjon",
+                  description: "Se eller skriv ut malen i fast format.",
+                  href: "/dokumenter/mal-innmelding-trossamfunn.pdf",
+                },
+              ].map(({ format, title, description, href }, index) => (
+                <Reveal key={format} delay={index * 0.06}>
+                  <a
+                    className="group flex h-full min-h-64 flex-col rounded-2xl border border-[rgba(4,120,87,.16)] bg-white p-6 text-[#211a14] shadow-[0_1px_4px_rgba(4,120,87,.05)] transition hover:-translate-y-1 hover:border-[#047857] hover:shadow-[0_12px_32px_rgba(4,120,87,.12)]"
+                    href={href}
+                    download
+                  >
+                    <span className="mb-8 grid size-14 place-items-center rounded-xl bg-[#047857] text-xs font-extrabold tracking-[.08em] text-white">
+                      {format}
+                    </span>
+                    <strong className="text-xl leading-tight">{title}</strong>
+                    <span className="mt-2 text-sm leading-6 text-[#857567]">
+                      {description}
+                    </span>
+                    <span className="mt-auto pt-8 text-sm font-extrabold tracking-[.04em] text-[#047857] uppercase group-hover:text-[#064e3b]">
+                      Last ned {format} ↓
+                    </span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="scroll-mt-20 py-[clamp(48px,7vw,104px)]" id="faq">
-          <div className="mx-auto w-[min(1000px,calc(100%_-_48px))] max-md:w-[calc(100%_-_32px)] max-sm:w-[calc(100%_-_28px)]">
+          <div className="mx-auto w-full max-w-5xl px-6 max-md:px-4 max-sm:px-3.5">
             <Reveal>
               <h2 className="mt-0 mb-[clamp(28px,3vw,44px)] text-3xl leading-[1.05] font-extrabold tracking-[-.03em] sm:text-4xl lg:text-5xl">
                 Ofte stilte spørsmål
@@ -737,7 +797,7 @@ export function LandingPage() {
         </section>
 
         <section className="bg-[#064e3b] text-[#fffcfa]">
-          <div className="mx-auto w-[min(1000px,calc(100%_-_48px))] py-[clamp(56px,8vw,120px)] max-md:w-[calc(100%_-_32px)] max-sm:w-[calc(100%_-_28px)]">
+          <div className="mx-auto w-full max-w-5xl px-6 py-[clamp(56px,8vw,120px)] max-md:px-4 max-sm:px-3.5">
             <Reveal className="flex flex-col items-center gap-[clamp(22px,2.6vw,34px)] text-center">
               <span className="text-[12.5px] font-bold tracking-[.2em] text-[#6ee7b7] uppercase">
                 Oslo • 2026
@@ -853,20 +913,22 @@ export function LandingPage() {
       <AnimatePresence>
         {showMobileCta && (
           <motion.div
-            className="fixed right-0 bottom-0 left-0 z-70 border-t border-[rgba(92,79,68,.14)] bg-[rgba(255,252,250,.94)] px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] backdrop-blur-[14px]"
+            className="fixed right-0 bottom-0 left-0 z-70 border-t border-[rgba(92,79,68,.14)] bg-[rgba(255,252,250,.94)] px-4 pt-3 pb-3 backdrop-blur-[14px]"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: reduceMotion ? 0 : 0.22 }}
           >
-            <a
-              className="flex min-h-[58px] items-center justify-center rounded-full bg-[#047857] px-5 py-4 text-base font-extrabold tracking-[.04em] text-white uppercase"
-              href={CHECK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Sjekk medlemskapet →
-            </a>
+            <div className="pb-[env(safe-area-inset-bottom)]">
+              <a
+                className="flex min-h-[58px] items-center justify-center rounded-full bg-[#047857] px-5 py-4 text-base font-extrabold tracking-[.04em] text-white uppercase"
+                href={CHECK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sjekk medlemskapet →
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
