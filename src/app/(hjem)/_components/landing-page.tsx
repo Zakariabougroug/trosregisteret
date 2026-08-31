@@ -137,6 +137,32 @@ function CheckIcon() {
   );
 }
 
+function DownloadIcon() {
+  return (
+    <svg
+      className="size-4 shrink-0 fill-none stroke-current stroke-[2.4] [stroke-linecap:round] [stroke-linejoin:round]"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5M12 15V3" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg
+      className="mt-0.5 size-[18px] shrink-0 fill-none stroke-[#047857] stroke-[2.1] [stroke-linecap:round] [stroke-linejoin:round]"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4M12 8h.01" />
+    </svg>
+  );
+}
+
 function CampaignButton({
   children,
   dark = false,
@@ -677,62 +703,133 @@ export function LandingPage() {
         </section>
 
         <section
-          className="scroll-mt-20 border-b border-[rgba(4,120,87,.16)] bg-[#ecfdf5]"
+          className="scroll-mt-20 border-y border-[rgba(92,79,68,.12)] bg-[#f7f2ed]"
           id="for-trossamfunn"
         >
-          <div className={`${shell} grid grid-cols-2 items-center gap-12 py-16 lg:gap-20 lg:py-24 max-md:grid-cols-1`}>
-            <Reveal className="flex max-w-2xl flex-col items-start gap-5">
-              <span className="text-xs font-bold tracking-[.14em] text-[#047857] uppercase">
-                For trossamfunn
+          <div className={`${shell} py-[clamp(48px,7vw,104px)]`}>
+            <Reveal className="mb-[clamp(32px,4vw,52px)] flex max-w-[760px] flex-col gap-4">
+              <span className="text-[12.5px] font-bold tracking-[.14em] text-[#047857] uppercase">
+                For trossamfunn og moskeer
               </span>
-              <h2 className="m-0 text-3xl leading-tight font-extrabold tracking-[-.03em] text-balance sm:text-4xl lg:text-5xl">
-                Mangler dere et innmeldingsskjema?
+              <h2 className="m-0 text-3xl leading-[1.05] font-extrabold tracking-[-.03em] text-balance sm:text-4xl lg:text-5xl xl:text-6xl">
+                Last ned materiell til eget bruk
               </h2>
-              <p className="m-0 text-base leading-7 text-[#5c4f44] md:text-lg">
-                Last ned en gratis mal for innmelding av voksne. Velg Word for
-                å tilpasse skjemaet, eller PDF for forhåndsvisning og utskrift.
-              </p>
-              <p className="m-0 border-l-2 border-[#047857] pl-4 text-sm leading-6 font-semibold text-[#065f46]">
-                Husk å legge inn trossamfunnets navn, logo, adresse og
-                kontaktinformasjon før skjemaet tas i bruk.
+              <p className="m-0 max-w-[58ch] text-[16.5px] leading-[1.65] text-[#5c4f44]">
+                Alt materiellet er gratis å bruke for alle tros- og
+                livssynssamfunn. Heng opp plakatene i lokalet, eller del
+                skjemamalen med nye medlemmer.
               </p>
             </Reveal>
 
-            <div className="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+            <div className="grid gap-[clamp(14px,1.8vw,22px)] md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  format: "DOCX",
-                  title: "Redigerbar Word-mal",
-                  description: "Tilpass navn, logo og kontaktopplysninger.",
-                  href: "/dokumenter/mal-innmelding-trossamfunn.docx",
+                  title: "Plakat – lys utgave",
+                  description:
+                    "Kampanjeplakat på varm off-white, med QR-kode og tall for tilskuddsgrunnlaget.",
+                  href: "/dokumenter/plakat-lys-a4.pdf",
+                  preview: "/dokumenter/forhandsvisning/plakat-lys-a4.png",
+                  previewAlt: "Forhåndsvisning av lys kampanjeplakat",
+                  previewClassName: "border-[rgba(92,79,68,.12)] bg-[#f7f2ed]",
                 },
                 {
-                  format: "PDF",
-                  title: "PDF-versjon",
-                  description: "Se eller skriv ut malen i fast format.",
-                  href: "/dokumenter/mal-innmelding-trossamfunn.pdf",
+                  title: "Plakat – grønn utgave",
+                  description:
+                    "Samme budskap i emerald, for vegger og oppslagstavler der den lyse forsvinner.",
+                  href: "/dokumenter/plakat-gronn-a4.pdf",
+                  preview: "/dokumenter/forhandsvisning/plakat-gronn-a4.png",
+                  previewAlt: "Forhåndsvisning av grønn kampanjeplakat",
+                  previewClassName: "border-[rgba(4,120,87,.18)] bg-[#ecfdf5]",
                 },
-              ].map(({ format, title, description, href }, index) => (
-                <Reveal key={format} delay={index * 0.06}>
-                  <a
-                    className="group flex h-full min-h-64 flex-col rounded-2xl border border-[rgba(4,120,87,.16)] bg-white p-6 text-[#211a14] shadow-[0_1px_4px_rgba(4,120,87,.05)] transition hover:-translate-y-1 hover:border-[#047857] hover:shadow-[0_12px_32px_rgba(4,120,87,.12)]"
-                    href={href}
-                    download
-                  >
-                    <span className="mb-8 grid size-14 place-items-center rounded-xl bg-[#047857] text-xs font-extrabold tracking-[.08em] text-white">
-                      {format}
-                    </span>
-                    <strong className="text-xl leading-tight">{title}</strong>
-                    <span className="mt-2 text-sm leading-6 text-[#857567]">
-                      {description}
-                    </span>
-                    <span className="mt-auto pt-8 text-sm font-extrabold tracking-[.04em] text-[#047857] uppercase group-hover:text-[#064e3b]">
-                      Last ned {format} ↓
-                    </span>
-                  </a>
+              ].map((poster, index) => (
+                <Reveal key={poster.href} delay={index * 0.06}>
+                  <article className="group flex h-full flex-col gap-[18px] rounded-[20px] border border-[rgba(92,79,68,.12)] bg-white p-[clamp(20px,2.2vw,26px)] text-[#211a14] shadow-[0_1px_4px_rgba(120,80,40,.07),0_4px_16px_rgba(120,80,40,.05)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(120,80,40,.1),0_18px_48px_rgba(120,80,40,.09)]">
+                    <div
+                      className={`flex h-48 items-center justify-center overflow-hidden rounded-xl border p-3 ${poster.previewClassName}`}
+                    >
+                      <Image
+                        className="h-full w-auto rounded-[3px] object-contain shadow-[0_2px_8px_rgba(120,80,40,.14)]"
+                        src={poster.preview}
+                        alt={poster.previewAlt}
+                        width={595}
+                        height={842}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <span className="self-start rounded-full bg-[#f7f2ed] px-[11px] py-1.5 text-[10.5px] font-bold tracking-[.12em] text-[#857567] uppercase">
+                        Plakat · A4
+                      </span>
+                      <h3 className="m-0 text-[19px] leading-[1.25] font-extrabold tracking-[-.015em]">
+                        {poster.title}
+                      </h3>
+                      <p className="m-0 text-sm leading-[1.55] text-[#5c4f44]">
+                        {poster.description}
+                      </p>
+                    </div>
+                    <a
+                      className="mt-auto inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-full bg-[#047857] px-[22px] py-4 text-[13.5px] font-extrabold tracking-[.04em] text-white uppercase transition-colors hover:bg-[#064e3b] hover:text-white"
+                      href={poster.href}
+                      download
+                    >
+                      <DownloadIcon />
+                      Last ned PDF
+                    </a>
+                  </article>
                 </Reveal>
               ))}
+
+              <Reveal delay={0.12} className="md:max-lg:col-span-2">
+                <article className="group flex h-full flex-col gap-[18px] rounded-[20px] border border-[rgba(92,79,68,.12)] bg-white p-[clamp(20px,2.2vw,26px)] text-[#211a14] shadow-[0_1px_4px_rgba(120,80,40,.07),0_4px_16px_rgba(120,80,40,.05)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(120,80,40,.1),0_18px_48px_rgba(120,80,40,.09)]">
+                  <div className="flex h-48 items-center justify-center rounded-xl border border-[rgba(180,83,9,.16)] bg-[#fffbeb]">
+                    <div className="flex h-[156px] w-[110px] flex-col gap-2 rounded bg-white p-4 shadow-[0_2px_8px_rgba(120,80,40,.14)] ring-1 ring-[rgba(92,79,68,.14)]">
+                      <span className="h-1.5 w-[70%] rounded bg-[#b45309]" />
+                      <span className="h-1.5 w-[88%] rounded bg-[#b45309]" />
+                      <span className="mt-0.5 h-1 w-[56%] rounded bg-[#ddd5c8]" />
+                      <span className="mt-auto ml-auto size-8 rounded bg-[#b45309]" />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="self-start rounded-full bg-[#f7f2ed] px-[11px] py-1.5 text-[10.5px] font-bold tracking-[.12em] text-[#857567] uppercase">
+                      Mal · A4
+                    </span>
+                    <h3 className="m-0 text-[19px] leading-[1.25] font-extrabold tracking-[-.015em]">
+                      Innmeldingsskjema
+                    </h3>
+                    <p className="m-0 text-sm leading-[1.55] text-[#5c4f44]">
+                      Ferdig mal for innmelding: personopplysninger, erklæring
+                      om ett medlemskap og signatur.
+                    </p>
+                  </div>
+                  <div className="mt-auto grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    <a
+                      className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#047857] px-4 py-4 text-[13px] font-extrabold tracking-[.04em] text-white uppercase transition-colors hover:bg-[#064e3b] hover:text-white"
+                      href="/dokumenter/mal-innmeldingsskjema.pdf"
+                      download
+                    >
+                      <DownloadIcon />
+                      Last ned PDF
+                    </a>
+                    <a
+                      className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border-2 border-[#047857] bg-white px-4 py-[14px] text-[13px] font-extrabold tracking-[.04em] text-[#047857] uppercase transition-colors hover:bg-[#ecfdf5] hover:text-[#064e3b]"
+                      href="/dokumenter/mal-innmelding-trossamfunn.docx"
+                      download
+                    >
+                      <DownloadIcon />
+                      Last ned DOCX
+                    </a>
+                  </div>
+                </article>
+              </Reveal>
             </div>
+
+            <Reveal className="mt-[clamp(20px,2.4vw,28px)] flex max-w-[820px] items-start gap-3 rounded-2xl border border-[rgba(92,79,68,.12)] bg-white px-5 py-[18px]">
+              <InfoIcon />
+              <p className="m-0 text-sm leading-[1.6] text-[#5c4f44]">
+                PDF-filene kan åpnes i nettleseren eller skrives ut direkte på
+                A4. Skjemamalen kan tilpasses med eget navn, logo og
+                organisasjonsnummer før utskrift.
+              </p>
+            </Reveal>
           </div>
         </section>
 
@@ -890,10 +987,16 @@ export function LandingPage() {
               <a className="text-[#c4b8a8] hover:text-white" href="#faq">
                 Kilder
               </a>
-              <Link className="text-[#c4b8a8] hover:text-white" href="/personvern">
+              <Link
+                className="text-[#c4b8a8] hover:text-white"
+                href="/personvern"
+              >
                 Personvern
               </Link>
-              <Link className="text-[#c4b8a8] hover:text-white" href="/informasjonskapsler">
+              <Link
+                className="text-[#c4b8a8] hover:text-white"
+                href="/informasjonskapsler"
+              >
                 Cookie-policy
               </Link>
               <CookieSettingsButton className="cursor-pointer border-0 bg-transparent p-0 text-left text-[#c4b8a8] hover:text-white" />
